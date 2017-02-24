@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2016 at 01:39 PM
--- Server version: 5.5.39
--- PHP Version: 5.4.31
+-- Generation Time: Feb 24, 2017 at 08:12 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,8 +27,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `abc` (
-`as` int(2) NOT NULL,
-  `sa` int(2) NOT NULL
+  `as` int(2) NOT NULL AUTO_INCREMENT,
+  `sa` int(2) NOT NULL,
+  PRIMARY KEY (`as`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -47,7 +48,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`email`, `password`) VALUES
-('karan@gmail.com', 'karan');
+('karan@gmail.com', 'karan'),
+('renita@gmail.com', '12345'),
+('renita@gmail.com', '12345');
 
 -- --------------------------------------------------------
 
@@ -56,9 +59,10 @@ INSERT INTO `admin` (`email`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cart` (
-`c_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`c_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
@@ -99,14 +103,15 @@ INSERT INTO `login` (`email`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `products` (
-`count` int(11) NOT NULL,
+  `count` int(11) NOT NULL AUTO_INCREMENT,
   `pname` varchar(255) NOT NULL,
   `cname` varchar(255) NOT NULL,
   `ptype` varchar(255) NOT NULL,
   `btype` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `desc` varchar(255) NOT NULL,
-  `cost` int(11) NOT NULL
+  `cost` int(11) NOT NULL,
+  PRIMARY KEY (`count`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
@@ -129,9 +134,10 @@ INSERT INTO `products` (`count`, `pname`, `cname`, `ptype`, `btype`, `image`, `d
 --
 
 CREATE TABLE IF NOT EXISTS `reviews` (
-`r_id` int(3) NOT NULL,
+  `r_id` int(3) NOT NULL AUTO_INCREMENT,
   `review` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL
+  `username` varchar(255) NOT NULL,
+  PRIMARY KEY (`r_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
@@ -151,10 +157,11 @@ INSERT INTO `reviews` (`r_id`, `review`, `username`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`count` int(11) NOT NULL,
+  `count` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`count`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -165,69 +172,6 @@ INSERT INTO `users` (`count`, `name`, `email`, `password`) VALUES
 (1, 'abhijeet', 'polly@gmail.com', 'polly'),
 (2, 'Karan', 'kmj@gmail.com', 'kk');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `abc`
---
-ALTER TABLE `abc`
- ADD PRIMARY KEY (`as`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
- ADD PRIMARY KEY (`c_id`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
- ADD PRIMARY KEY (`count`);
-
---
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
- ADD PRIMARY KEY (`r_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
- ADD PRIMARY KEY (`count`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `abc`
---
-ALTER TABLE `abc`
-MODIFY `as` int(2) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-MODIFY `count` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
-MODIFY `r_id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-MODIFY `count` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
